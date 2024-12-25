@@ -1,0 +1,10 @@
+Stop: D-12
+Destination: GT Road
+Distance: 10 km
+Time: 12 min
+-----------------------------
+Stop: GT Road
+Destination: D-12
+Distance: 10 km
+Time: 30 min
+-----------------------------
