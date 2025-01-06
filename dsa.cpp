@@ -1405,7 +1405,7 @@ void Bus::generateTicket(int busIndex, int seatNumber)
     tickets.push_back(newTicket);
 
     // Output the ticket details to the console
-    cout << "Ticket generated!" << endl;
+    cout << "Ticket Generated!" << endl;
     cout << "Bus Number: " << newTicket.busNumber << endl;
     cout << "Driver: " << newTicket.driverName << endl;
     cout << "From: " << newTicket.from << " To: " << newTicket.to << endl;
