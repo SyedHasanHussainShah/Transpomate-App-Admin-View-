@@ -1,4 +1,5 @@
 #include <iostream>
+#include <bits/stdc++.h>
 #include <string>
 #include <vector>
 #include <limits>
@@ -8,7 +9,7 @@
 #include <chrono>
 #include <thread>
 #include <map>
-#include <ctime>    
+#include <ctime>
 #include <cstdlib>
 #include <iomanip>
 #include <fstream>
@@ -26,7 +27,7 @@ void spinningWheel()
         cout << "\r"                                       // Return to the start of the same line
              << string(width / 2, ' ')                     // Add some padding to center (adjust width if needed)
              << "Loading... " << spinner[i % 4] << flush;  // Print spinner
-        this_thread::sleep_for(chrono::milliseconds(200)); // Delay
+        // this_thread::sleep_for(chrono::milliseconds(200)); // Delay
     }
 
     // Clear spinner and show completion
@@ -204,11 +205,11 @@ void parseTime(const string &input, int &time, string &unit)
 
 void printHeader(const string &title)
 {
-     // Fetching the current time
+    // Fetching the current time
     time_t now = time(0);
     tm *localTime = localtime(&now);
     cout << "**************************************************************************************************************************************\n";
-    cout << "==                                                                                                    *Local Time: " << put_time(localTime, "%Y-%m-%d %H:%M:%S")<<"\n";
+    cout << "==                                                                                                    *Local Time: " << put_time(localTime, "%Y-%m-%d %H:%M:%S") << "\n";
     cout << "==                                                                                                     ===============================\n";
     cout << "==                                                                                                                                  ==\n";
     cout << "==                                    _____              _                 _                                                        ==\n";
@@ -227,12 +228,12 @@ void printSeparator()
     cout << "\n-----------------------------------\n";
 }
 void displayMainMenu()
-{   
-    
+{
+
     cout << "\n\t\t\t\t\t\t***************************"
          << "\n\t\t\t\t\t\t|1. Admin Login            |"
          << "\n\t\t\t\t\t\t|2. User Login             |"
-         << "\n\t\t\t\t\t\t|3. Fuel Management        |" 
+         << "\n\t\t\t\t\t\t|3. Fuel Management        |"
          << "\n\t\t\t\t\t\t|4. Passengers Feedback    |"
          << "\n\t\t\t\t\t\t|5. Exit                   |"
          << "\n\t\t\t\t\t\t****************************"
@@ -279,9 +280,11 @@ int readInteger()
     return value;
 }
 
-void Bus::installBus() {
+void Bus::installBus()
+{
     // Ensure we're not exceeding the array capacity of buses
-    if (p >= 10) {
+    if (p >= 10)
+    {
         cout << "                         | Cannot install more buses. Capacity full.\n";
         return;
     }
@@ -289,32 +292,39 @@ void Bus::installBus() {
     // Gather bus details from the user
     cout << "                         | Enter bus number: ";
     cin >> bus[p].busn;
-    cin.ignore();  // Clear the input buffer to avoid newline issues for next getline
+    cin.ignore(); // Clear the input buffer to avoid newline issues for next getline
 
     // Check if the bus number already exists in the file
     ifstream busFile("buses.txt");
     string busNumber;
     bool busExists = false;
 
-    if (busFile.is_open()) {
-        while (getline(busFile, busNumber)) {
+    if (busFile.is_open())
+    {
+        while (getline(busFile, busNumber))
+        {
             // Compare with each bus number in the file
-            if (busNumber == bus[p].busn) {
+            if (busNumber == bus[p].busn)
+            {
                 busExists = true; // Bus number already exists
                 break;
             }
             // Skip the next 5 lines in the file, which contain the details of the bus
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < 5; i++)
+            {
                 getline(busFile, busNumber); // Skip the lines for driver, arrival, etc.
             }
         }
         busFile.close();
-    } else {
+    }
+    else
+    {
         cerr << "                         | Error: Unable to open buses file.                                                                          \n";
         return;
     }
 
-    if (busExists) {
+    if (busExists)
+    {
         cout << "                         | Bus number already exists in the file. Please enter a unique bus number.                                   \n";
         return;
     }
@@ -337,18 +347,19 @@ void Bus::installBus() {
 
     // Add the bus details to the file
     ofstream outFile("buses.txt", ios::app); // Open file in append mode
-    if (!outFile.is_open()) {
+    if (!outFile.is_open())
+    {
         cerr << "                     | Error: Unable to open buses file.                                                                         \n";
         return;
     }
 
-    outFile << "Bus Number: "<<bus[p].busn << "\n"
-            << "Bus Driver: "<<bus[p].driver << "\n"
-            << "Bus Arrival: "<<bus[p].arrival << "\n"
-            << "Bus Depart: "<<bus[p].depart << "\n"
-            << "Bus From: "<<bus[p].from << "\n"
-            << "Bus To: "<<bus[p].to << "\n"
-            << "-------------" << "\n";  // Added separator for clarity
+    outFile << "Bus Number: " << bus[p].busn << "\n"
+            << "Bus Driver: " << bus[p].driver << "\n"
+            << "Bus Arrival: " << bus[p].arrival << "\n"
+            << "Bus Depart: " << bus[p].depart << "\n"
+            << "Bus From: " << bus[p].from << "\n"
+            << "Bus To: " << bus[p].to << "\n"
+            << "-------------" << "\n"; // Added separator for clarity
     outFile.close();
 
     // Increment the bus counter
@@ -357,10 +368,12 @@ void Bus::installBus() {
     cout << "                         | Bus successfully installed and saved to file!" << endl;
 }
 
-void Bus::availableBuses() {
+void Bus::availableBuses()
+{
     // Open the file to read bus data
     ifstream busFile("buses.txt");
-    if (!busFile.is_open()) {
+    if (!busFile.is_open())
+    {
         cerr << "                     | Error: Unable to open buses file.\n";
         return;
     }
@@ -370,25 +383,29 @@ void Bus::availableBuses() {
 
     // Check if there are any buses in the file
     bool busExists = false;
-    while (getline(busFile, busNumber)) {
+    while (getline(busFile, busNumber))
+    {
         // Skip separator lines (use a single check for all fields)
-        if (busNumber == "-------------") continue;
-        
+        if (busNumber == "-------------")
+            continue;
+
         // Read the remaining details of the bus
         getline(busFile, driver);
         getline(busFile, arrival);
         getline(busFile, depart);
         getline(busFile, from);
         getline(busFile, to);
-        
+
         // Skip separator lines in other fields if any
         if (driver == "-------------" || arrival == "-------------" || depart == "-------------" ||
-            from == "-------------" || to == "-------------") {
+            from == "-------------" || to == "-------------")
+        {
             continue; // Skip this bus if any of its details is a separator line
         }
 
         // Check if any field is empty, skip this bus if so
-        if (busNumber.empty() || driver.empty() || arrival.empty() || depart.empty() || from.empty() || to.empty()) {
+        if (busNumber.empty() || driver.empty() || arrival.empty() || depart.empty() || from.empty() || to.empty())
+        {
             continue; // Skip this record if it's incomplete
         }
 
@@ -406,37 +423,46 @@ void Bus::availableBuses() {
     }
 
     // If no buses exist, show an appropriate message
-    if (!busExists) {
+    if (!busExists)
+    {
         cout << "                         | No buses available.\n";
     }
 
     busFile.close();
 }
 
-
-
 // URL encoding function (basic implementation for spaces and other characters)
-string urlEncode(const string& value) {
+string urlEncode(const string &value)
+{
     string encoded = "";
-    for (char c : value) {
-        if (c == ' ') encoded += "%20";
-        else if (c == '+') encoded += "%2B";
-        else if (c == '&') encoded += "%26";
-        else if (c == '=') encoded += "%3D";
-        else encoded += c;
+    for (char c : value)
+    {
+        if (c == ' ')
+            encoded += "%20";
+        else if (c == '+')
+            encoded += "%2B";
+        else if (c == '&')
+            encoded += "%26";
+        else if (c == '=')
+            encoded += "%3D";
+        else
+            encoded += c;
     }
     return encoded;
 }
 
-void openInBrowser(const string& url) {
+void openInBrowser(const string &url)
+{
     // Ensure the URL is correctly enclosed in quotes and use start command for Windows
     string command = "start \"\" \"" + url + "\"";
-    cout << "Executing command: " << command << endl;  // Debugging line
+    cout << "Executing command: " << command << endl; // Debugging line
     system(command.c_str());
 }
 
-void generateMapURL(const vector<pair<string, string>>& predefinedRoutes) {
-    for (const auto& route : predefinedRoutes) {
+void generateMapURL(const vector<pair<string, string>> &predefinedRoutes)
+{
+    for (const auto &route : predefinedRoutes)
+    {
         string stop = route.first;
         string destination = route.second;
 
@@ -452,23 +478,26 @@ void generateMapURL(const vector<pair<string, string>>& predefinedRoutes) {
     }
 }
 
-
-void Bus::showPredefinedStops() {
+void Bus::showPredefinedStops()
+{
     cout << "\nPredefined Stops:\n";
-    for (int i = 0; i < predefinedStops.size(); ++i) {
+    for (int i = 0; i < predefinedStops.size(); ++i)
+    {
         cout << i + 1 << ". " << predefinedStops[i] << endl;
     }
     // Display predefined routes with distances and times
     cout << "\nPredefined Routes:" << endl;
-    for (const auto& route : predefinedRoutes) {
+    for (const auto &route : predefinedRoutes)
+    {
         cout << route.first.first << " to " << route.first.second
-            << " -> Distance: " << route.second.first << " km, Time: " << route.second.second << " minutes" << endl;
+             << " -> Distance: " << route.second.first << " km, Time: " << route.second.second << " minutes" << endl;
     }
 }
 
 // Function to add a new route
-void Bus::addRoute() {
-    Node* newNode = new Node();
+void Bus::addRoute()
+{
+    Node *newNode = new Node();
 
     // Display predefined stops for user to choose from
     showPredefinedStops();
@@ -478,51 +507,61 @@ void Bus::addRoute() {
     bool validStop = false;
 
     cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Clear input buffer
-    do {
+    do
+    {
         cout << "\nEnter a stop name from the list: ";
         getline(cin, stopChoice);
 
-        for (const auto& stop : predefinedStops) {
-            if (stop == stopChoice) {
+        for (const auto &stop : predefinedStops)
+        {
+            if (stop == stopChoice)
+            {
                 newNode->stop = stopChoice; // Assign selected stop
                 validStop = true;
                 break;
             }
         }
 
-        if (!validStop) {
+        if (!validStop)
+        {
             cout << "Invalid stop! Please choose a valid stop from the list.\n";
         }
     } while (!validStop);
 
     // Ask user to select a destination (by name)
     validStop = false;
-    do {
+    do
+    {
         cout << "\nEnter a destination name from the list: ";
         getline(cin, destinationChoice);
 
-        for (const auto& stop : predefinedStops) {
-            if (stop == destinationChoice && stop != stopChoice) { // Destination must be different
+        for (const auto &stop : predefinedStops)
+        {
+            if (stop == destinationChoice && stop != stopChoice)
+            { // Destination must be different
                 newNode->destination = destinationChoice;
                 validStop = true;
                 break;
             }
         }
 
-        if (!validStop) {
+        if (!validStop)
+        {
             cout << "Invalid destination! Please choose a valid destination from the list.\n";
         }
     } while (!validStop);
 
     // Automatically assign distance and time based on predefined routes
     auto routeKey = make_pair(stopChoice, destinationChoice);
-    if (predefinedRoutes.find(routeKey) != predefinedRoutes.end()) {
+    if (predefinedRoutes.find(routeKey) != predefinedRoutes.end())
+    {
         newNode->distance = predefinedRoutes[routeKey].first;
         newNode->distanceUnit = "km";
         newNode->time = predefinedRoutes[routeKey].second;
         newNode->timeUnit = "min";
     }
-    else {
+    else
+    {
         cerr << "Error: Route not found in predefined routes.\n";
         delete newNode;
         return;
@@ -531,13 +570,16 @@ void Bus::addRoute() {
     newNode->next = nullptr; // Initialize the next pointer to nullptr
 
     // If list is empty, set the new node as head
-    if (this->head == nullptr) {
+    if (this->head == nullptr)
+    {
         newNode->prev = nullptr; // Previous pointer for the head is null
         this->head = newNode;    // Set head to the new node
     }
-    else {
-        Node* temp = this->head;
-        while (temp->next != nullptr) {
+    else
+    {
+        Node *temp = this->head;
+        while (temp->next != nullptr)
+        {
             temp = temp->next; // Traverse to the last node
         }
         temp->next = newNode; // Link the last node to the new node
@@ -546,26 +588,28 @@ void Bus::addRoute() {
 
     // Write the route details to a file
     ofstream routeFile("routes.txt", ios::app); // Open the file in append mode
-    if (!routeFile.is_open()) {
+    if (!routeFile.is_open())
+    {
         cerr << "Error: Unable to open routes file.\n";
         return;
     }
 
     routeFile << "Stop: " << newNode->stop << "\n"
-        << "Destination: " << newNode->destination << "\n"
-        << "Distance: " << newNode->distance << " " << newNode->distanceUnit << "\n"
-        << "Time: " << newNode->time << " " << newNode->timeUnit << "\n"
-        << "-----------------------------\n";
+              << "Destination: " << newNode->destination << "\n"
+              << "Distance: " << newNode->distance << " " << newNode->distanceUnit << "\n"
+              << "Time: " << newNode->time << " " << newNode->timeUnit << "\n"
+              << "-----------------------------\n";
 
     routeFile.close();
 
     cout << "\nRoute added successfully and saved to file!\n";
-    
+
     // Open the map for the new route
-    vector<pair<string, string>> routeToMap = { {newNode->stop, newNode->destination} };
+    vector<pair<string, string>> routeToMap = {{newNode->stop, newNode->destination}};
     generateMapURL(routeToMap);
 }
-void Bus::editRoute() {
+void Bus::editRoute()
+{
     string routeName;
     bool routeFound = false;
 
@@ -575,7 +619,8 @@ void Bus::editRoute() {
     cin >> proceed;
     cin.ignore(); // To clear the newline character from the input buffer
 
-    if (proceed == 'n' || proceed == 'N') {
+    if (proceed == 'n' || proceed == 'N')
+    {
         cout << "Route edit cancelled.\n";
         return; // Exit without making any changes
     }
@@ -592,8 +637,9 @@ void Bus::editRoute() {
     transform(routeName.begin(), routeName.end(), routeName.begin(), ::tolower);
 
     // Search for the route to edit
-    Node* temp = head;
-    while (temp != nullptr) {
+    Node *temp = head;
+    while (temp != nullptr)
+    {
         string stopLower = temp->stop;
         string destinationLower = temp->destination;
 
@@ -601,14 +647,16 @@ void Bus::editRoute() {
         transform(stopLower.begin(), stopLower.end(), stopLower.begin(), ::tolower);
         transform(destinationLower.begin(), destinationLower.end(), destinationLower.begin(), ::tolower);
 
-        if (stopLower == routeName || destinationLower == routeName) {
+        if (stopLower == routeName || destinationLower == routeName)
+        {
             routeFound = true;
             break;
         }
         temp = temp->next;
     }
 
-    if (!routeFound) {
+    if (!routeFound)
+    {
         cout << "Route not found.\n";
         return;
     }
@@ -617,76 +665,89 @@ void Bus::editRoute() {
     string newStop, newDestination;
     bool validStop = false, validDestination = false;
 
-    do {
+    do
+    {
         cout << "\nEnter new stop name: ";
         getline(cin, newStop);
 
-        for (const auto& stop : predefinedStops) {
-            if (stop == newStop) {
+        for (const auto &stop : predefinedStops)
+        {
+            if (stop == newStop)
+            {
                 temp->stop = newStop;
                 validStop = true;
                 break;
             }
         }
 
-        if (!validStop) {
+        if (!validStop)
+        {
             cout << "Invalid stop! Please choose a valid stop.\n";
         }
     } while (!validStop);
 
-    do {
+    do
+    {
         cout << "\nEnter new destination name: ";
         getline(cin, newDestination);
 
-        for (const auto& stop : predefinedStops) {
-            if (stop == newDestination) {
+        for (const auto &stop : predefinedStops)
+        {
+            if (stop == newDestination)
+            {
                 temp->destination = newDestination;
                 validDestination = true;
                 break;
             }
         }
 
-        if (!validDestination) {
+        if (!validDestination)
+        {
             cout << "Invalid destination! Please choose a valid destination.\n";
         }
     } while (!validDestination);
 
     // Automatically assign distance and time based on predefined routes
     auto routeKey = make_pair(temp->stop, temp->destination);
-    if (predefinedRoutes.find(routeKey) != predefinedRoutes.end()) {
+    if (predefinedRoutes.find(routeKey) != predefinedRoutes.end())
+    {
         temp->distance = predefinedRoutes[routeKey].first;
         temp->distanceUnit = "km";
         temp->time = predefinedRoutes[routeKey].second;
         temp->timeUnit = "min";
     }
-    else {
+    else
+    {
         cerr << "Error: Route not found in predefined routes.\n";
         return;
     }
 
     // Update the route details in the file
     vector<Node> routes;
-    Node* current = head;
+    Node *current = head;
 
     // Collect all routes in memory
-    while (current != nullptr) {
+    while (current != nullptr)
+    {
         routes.push_back(*current);
         current = current->next;
     }
 
     // Overwrite the file with updated routes
     ofstream routeFile("routes.txt", ios::trunc); // Open file in truncate mode
-    if (!routeFile.is_open()) {
+    if (!routeFile.is_open())
+    {
         cerr << "Error: Unable to open routes file.\n";
         return;
     }
 
-    for (const auto& route : routes) {
+    for (const auto &route : routes)
+    {
         routeFile << "Stop: " << route.stop << "\n"
-            << "Destination: " << route.destination << "\n"
-            << "Distance: " << route.distance << " " << route.distanceUnit << "\n"
-            << "Time: " << route.time << " " << route.timeUnit << "\n"
-            << "-----------------------------\n";
+                  << "Destination: " << route.destination << "\n"
+                  << "Distance: " << route.distance << " " << route.distanceUnit << "\n"
+                  << "Time: " << route.time << " " << route.timeUnit << "\n"
+                  << "-----------------------------\n";
     }
 
     routeFile.close();
@@ -699,31 +760,36 @@ void Bus::editRoute() {
     cin >> mapChoice;
     cin.ignore(); // Clear the newline character
 
-    if (mapChoice == 'y' || mapChoice == 'Y') {
+    if (mapChoice == 'y' || mapChoice == 'Y')
+    {
         vector<pair<string, string>> updatedRoute;
-        Node* mapNode = head;
+        Node *mapNode = head;
 
         // Collect all valid stop-destination pairs
-        while (mapNode != nullptr) {
-            if (!mapNode->stop.empty() && !mapNode->destination.empty()) {
-                updatedRoute.push_back({ mapNode->stop, mapNode->destination });
+        while (mapNode != nullptr)
+        {
+            if (!mapNode->stop.empty() && !mapNode->destination.empty())
+            {
+                updatedRoute.push_back({mapNode->stop, mapNode->destination});
             }
             mapNode = mapNode->next;
         }
 
-        if (!updatedRoute.empty()) {
+        if (!updatedRoute.empty())
+        {
             // Pass the updated routes to generate the map
             generateMapURL(updatedRoute);
             cout << "Map updated successfully!\n";
         }
-        else {
+        else
+        {
             cout << "No valid routes available for map generation.\n";
         }
     }
 }
 
-
-void Bus::removeRoute() {
+void Bus::removeRoute()
+{
     string routeName;
     bool routeFound = false;
 
@@ -733,7 +799,8 @@ void Bus::removeRoute() {
     cin >> removeChoice;
     cin.ignore(); // Clear the newline character from the input buffer
 
-    if (removeChoice == 'n' || removeChoice == 'N') {
+    if (removeChoice == 'n' || removeChoice == 'N')
+    {
         cout << "Skipping remove operation.\n";
         return; // Exit if the user doesn't want to remove
     }
@@ -747,29 +814,35 @@ void Bus::removeRoute() {
     getline(cin, routeName);
 
     // Search for the route to remove
-    Node* temp = head;
-    while (temp != nullptr) {
-        if (temp->stop == routeName || temp->destination == routeName) {
+    Node *temp = head;
+    while (temp != nullptr)
+    {
+        if (temp->stop == routeName || temp->destination == routeName)
+        {
             routeFound = true;
             break;
         }
         temp = temp->next;
     }
 
-    if (!routeFound) {
+    if (!routeFound)
+    {
         cout << "Route not found.\n";
         return;
     }
 
     // Handle removal of node from the linked list
-    if (temp->prev != nullptr) {
+    if (temp->prev != nullptr)
+    {
         temp->prev->next = temp->next;
     }
-    else {
+    else
+    {
         head = temp->next; // Update head if it's the first node
     }
 
-    if (temp->next != nullptr) {
+    if (temp->next != nullptr)
+    {
         temp->next->prev = temp->prev;
     }
 
@@ -777,19 +850,21 @@ void Bus::removeRoute() {
 
     // Update the file to exclude the removed route
     ofstream routeFile("routes.txt", ios::trunc); // Open file in truncate mode
-    if (!routeFile.is_open()) {
+    if (!routeFile.is_open())
+    {
         cerr << "Error: Unable to open routes file.\n";
         return;
     }
 
     // Write all remaining routes back to the file
-    Node* current = head;
-    while (current != nullptr) {
+    Node *current = head;
+    while (current != nullptr)
+    {
         routeFile << "Stop: " << current->stop << "\n"
-            << "Destination: " << current->destination << "\n"
-            << "Distance: " << current->distance << " " << current->distanceUnit << "\n"
-            << "Time: " << current->time << " " << current->timeUnit << "\n"
-            << "-----------------------------\n";
+                  << "Destination: " << current->destination << "\n"
+                  << "Distance: " << current->distance << " " << current->distanceUnit << "\n"
+                  << "Time: " << current->time << " " << current->timeUnit << "\n"
+                  << "-----------------------------\n";
         current = current->next;
     }
 
@@ -803,41 +878,49 @@ void Bus::removeRoute() {
     cin >> mapChoice;
     cin.ignore(); // Clear the newline character from the input buffer
 
-    if (mapChoice == 'y' || mapChoice == 'Y') {
+    if (mapChoice == 'y' || mapChoice == 'Y')
+    {
         // Collect all valid stop-destination pairs for remaining routes
         vector<pair<string, string>> remainingRoutes;
-        Node* mapNode = head;
+        Node *mapNode = head;
 
-        while (mapNode != nullptr) {
-            if (!mapNode->stop.empty() && !mapNode->destination.empty()) {
-                remainingRoutes.push_back({ mapNode->stop, mapNode->destination });
+        while (mapNode != nullptr)
+        {
+            if (!mapNode->stop.empty() && !mapNode->destination.empty())
+            {
+                remainingRoutes.push_back({mapNode->stop, mapNode->destination});
             }
             mapNode = mapNode->next;
         }
 
-        if (!remainingRoutes.empty()) {
+        if (!remainingRoutes.empty())
+        {
             generateMapURL(remainingRoutes); // Generate map for all remaining routes
             cout << "Map updated successfully!\n";
         }
-        else {
+        else
+        {
             cout << "No valid routes available for map generation.\n";
         }
     }
 }
 
-
-void Bus::displayRoutes() {
-    if (head == NULL) {
+void Bus::displayRoutes()
+{
+    if (head == NULL)
+    {
         // If no routes in memory, attempt to read from the file
         ifstream routeFile("routes.txt");
-        if (!routeFile.is_open()) {
+        if (!routeFile.is_open())
+        {
             cout << "No routes available and unable to open file.\n";
             return;
         }
 
         cout << "Routes from file:\n";
         string line;
-        while (getline(routeFile, line)) {
+        while (getline(routeFile, line))
+        {
             cout << line << endl;
         }
         routeFile.close();
@@ -845,30 +928,33 @@ void Bus::displayRoutes() {
     }
 
     // If routes are available in the linked list, display them
-    Node* temp = head;
+    Node *temp = head;
     int routeNumber = 1;
     cout << "Routes in memory:\n";
-    while (temp != NULL) {
+    while (temp != NULL)
+    {
         cout << routeNumber++ << ". Stop: " << temp->stop
-            << ", Destination: " << temp->destination
-            << "  Distance: " << temp->distance << " " << temp->distanceUnit
-            << "  Time: " << temp->time << " " << temp->timeUnit << endl;
+             << ", Destination: " << temp->destination
+             << "  Distance: " << temp->distance << " " << temp->distanceUnit
+             << "  Time: " << temp->time << " " << temp->timeUnit << endl;
 
-        generateMapURL({ make_pair(temp->stop, temp->destination) });
+        generateMapURL({make_pair(temp->stop, temp->destination)});
 
         temp = temp->next;
     }
 }
 
-
-void Bus::manageBusSchedule() {
+void Bus::manageBusSchedule()
+{
     ifstream busScheduleFile("bus_schedule.txt");
-    if (!busScheduleFile.is_open()) {
+    if (!busScheduleFile.is_open())
+    {
         cerr << "                         | Error: Unable to open bus schedule file.\n";
         return;
     }
 
-    for (int i = 0; i < p; i++) {  // Loop through all buses
+    for (int i = 0; i < p; i++)
+    { // Loop through all buses
         cout << "                         | Bus " << bus[i].busn << " Schedule:\n";
         cout << "                         | Driver: " << bus[i].driver << "\n";
         cout << "                         | Arrival Time: " << bus[i].arrival << "\n";
@@ -877,12 +963,13 @@ void Bus::manageBusSchedule() {
         cout << "                         | Stops: \n";
 
         // Display stops for the bus from file
-        Node* temp = bus[i].head; // Start from the head of the route
+        Node *temp = bus[i].head; // Start from the head of the route
         int stopNumber = 1;
-        while (temp != nullptr) {
+        while (temp != nullptr)
+        {
             cout << stopNumber << ". Stop: " << temp->stop << " | Destination: "
-                << temp->destination << " | Distance: " << temp->distance
-                << " km | Time: " << temp->time << " mins\n";
+                 << temp->destination << " | Distance: " << temp->distance
+                 << " km | Time: " << temp->time << " mins\n";
             temp = temp->next; // Move to the next stop
             stopNumber++;
         }
@@ -891,12 +978,14 @@ void Bus::manageBusSchedule() {
         cout << "                         | Do you want to edit any stops? (y/n): ";
         char choice;
         cin >> choice;
-        if (choice == 'y' || choice == 'Y') {
+        if (choice == 'y' || choice == 'Y')
+        {
             cout << "Enter the stop name to edit: ";
             string stopName;
-            cin.ignore();  // To clear any leftover newline characters
+            cin.ignore(); // To clear any leftover newline characters
             getline(cin, stopName);
-            if (!editStopByName(bus[i].head, stopName)) {
+            if (!editStopByName(bus[i].head, stopName))
+            {
                 cout << "Stop not found.\n";
             }
         }
@@ -904,23 +993,27 @@ void Bus::manageBusSchedule() {
         // Ask if user wants to remove a stop
         cout << "                         | Do you want to remove any stops? (y/n): ";
         cin >> choice;
-        if (choice == 'y' || choice == 'Y') {
+        if (choice == 'y' || choice == 'Y')
+        {
             cout << "Enter the stop name to remove: ";
             string stopName;
-            cin.ignore();  // To clear any leftover newline characters
+            cin.ignore(); // To clear any leftover newline characters
             getline(cin, stopName);
-            if (!removeStopByName(bus[i].head, stopName)) {
+            if (!removeStopByName(bus[i].head, stopName))
+            {
                 cout << "Stop not found.\n";
             }
         }
         cout << "                         | Do you want to view the map for the stops? (y/n): ";
         cin >> choice;
-        if (choice == 'y' || choice == 'Y') {
+        if (choice == 'y' || choice == 'Y')
+        {
             // Call the map generation function
-            Node* mapNode = bus[i].head;
-            while (mapNode != nullptr) {
+            Node *mapNode = bus[i].head;
+            while (mapNode != nullptr)
+            {
                 // Generate map for each stop
-                generateMapURL({ make_pair(mapNode->stop, mapNode->destination) });
+                generateMapURL({make_pair(mapNode->stop, mapNode->destination)});
                 mapNode = mapNode->next;
             }
         }
@@ -932,27 +1025,31 @@ void Bus::manageBusSchedule() {
 
     // After editing, save the updated bus schedule back to the file
     ofstream busScheduleOut("bus_schedule.txt");
-    if (!busScheduleOut.is_open()) {
+    if (!busScheduleOut.is_open())
+    {
         cerr << "Error: Unable to open bus schedule file for writing.\n";
         return;
     }
 
     // Write bus data and stops to the file
-    for (int i = 0; i < p; i++) {
-        busScheduleOut << "Bus Number: " <<bus[i].busn << endl;  // Bus number
-        busScheduleOut << "Bus Driver: " <<bus[i].driver << endl; // Driver's name
-        busScheduleOut << "Bus Arrival: " <<bus[i].arrival << endl;  // Arrival time
-        busScheduleOut << "Bus Depart: " <<bus[i].depart << endl;  // Departure time
+    for (int i = 0; i < p; i++)
+    {
+        busScheduleOut << "Bus Number: " << bus[i].busn << endl;     // Bus number
+        busScheduleOut << "Bus Driver: " << bus[i].driver << endl;   // Driver's name
+        busScheduleOut << "Bus Arrival: " << bus[i].arrival << endl; // Arrival time
+        busScheduleOut << "Bus Depart: " << bus[i].depart << endl;   // Departure time
 
         // Write stops for the bus
-        Node* temp = bus[i].head;
-        while (temp != nullptr) {
+        Node *temp = bus[i].head;
+        while (temp != nullptr)
+        {
             busScheduleOut << temp->stop << endl;
             busScheduleOut << temp->destination << endl;
 
             // Automatically determine distance and time if available in predefined routes
             auto routeKey = make_pair(temp->stop, temp->destination);
-            if (predefinedRoutes.find(routeKey) != predefinedRoutes.end()) {
+            if (predefinedRoutes.find(routeKey) != predefinedRoutes.end())
+            {
                 temp->distance = predefinedRoutes[routeKey].first;
                 temp->time = predefinedRoutes[routeKey].second;
             }
@@ -965,11 +1062,14 @@ void Bus::manageBusSchedule() {
 
     busScheduleOut.close();
 }
-bool Bus::editStopByName(Node* head, const string& stopName) {
-    Node* temp = head;
-    while (temp != nullptr) {
+bool Bus::editStopByName(Node *head, const string &stopName)
+{
+    Node *temp = head;
+    while (temp != nullptr)
+    {
         displayRoutes();
-        if (temp->stop == stopName) {
+        if (temp->stop == stopName)
+        {
             cout << "Editing stop: " << temp->stop << "\n";
 
             cout << "Enter new stop name: ";
@@ -980,41 +1080,47 @@ bool Bus::editStopByName(Node* head, const string& stopName) {
 
             // Automatically calculate distance and time based on predefined routes
             auto routeKey = make_pair(temp->stop, temp->destination);
-            if (predefinedRoutes.find(routeKey) != predefinedRoutes.end()) {
+            if (predefinedRoutes.find(routeKey) != predefinedRoutes.end())
+            {
                 temp->distance = predefinedRoutes[routeKey].first;
                 temp->time = predefinedRoutes[routeKey].second;
                 cout << "Distance and time updated automatically.\n";
 
                 // Call generateMapURL with valid route
-                generateMapURL({ routeKey });
+                generateMapURL({routeKey});
             }
-            else {
+            else
+            {
                 cout << "Route not found. Distance and time not updated.\n";
             }
 
             cout << "Stop updated successfully!\n";
-            return true;  // Stop found and updated
+            return true; // Stop found and updated
         }
-        temp = temp->next;  // Move to the next stop
+        temp = temp->next; // Move to the next stop
     }
-    return false;  // Stop not found
+    return false; // Stop not found
 }
 
-bool Bus::removeStopByName(Node*& head, const string& stopName) {
-    if (head == nullptr) {
+bool Bus::removeStopByName(Node *&head, const string &stopName)
+{
+    if (head == nullptr)
+    {
         cout << "No stops available to remove.\n";
         return false;
     }
 
-    Node* temp = head;
+    Node *temp = head;
 
     // Traverse the list to find the stop
-    while (temp != nullptr && temp->next != nullptr) {
-        if (temp->next->stop == stopName) {
+    while (temp != nullptr && temp->next != nullptr)
+    {
+        if (temp->next->stop == stopName)
+        {
             displayRoutes(); // Show routes before making changes
             cout << "Removing stop: " << temp->next->stop << "\n";
 
-            Node* toDelete = temp->next;
+            Node *toDelete = temp->next;
             temp->next = temp->next->next; // Skip the stop being removed
             delete toDelete;
 
@@ -1022,10 +1128,12 @@ bool Bus::removeStopByName(Node*& head, const string& stopName) {
 
             // Call generateMapURL for the updated route
             vector<pair<string, string>> updatedRoute;
-            Node* current = head;
-            while (current != nullptr) {
-                if (current->next != nullptr) {
-                    updatedRoute.push_back({ current->stop, current->next->stop });
+            Node *current = head;
+            while (current != nullptr)
+            {
+                if (current->next != nullptr)
+                {
+                    updatedRoute.push_back({current->stop, current->next->stop});
                 }
                 current = current->next;
             }
@@ -1037,16 +1145,17 @@ bool Bus::removeStopByName(Node*& head, const string& stopName) {
     }
 
     cout << "Stop not found.\n"; // Message if the stop is not in the list
-    return false;  // Stop not found
+    return false;                // Stop not found
 }
-void displayLoginTime() {
+void displayLoginTime()
+{
     // Fetch the current time
     time_t now = time(0);
     tm *localTime = localtime(&now);
 
     // Display the current time in a box
     cout << "**************************************************************************************************************************************\n";
-    cout << "                         |                                                                            *Login Time: " << put_time(localTime, "%Y-%m-%d %H:%M:%S")<<"\n";
+    cout << "                         |                                                                            *Login Time: " << put_time(localTime, "%Y-%m-%d %H:%M:%S") << "\n";
     cout << "                         |                                                                             ===============================\n";
     cout << "                         |                                                                                                            \n";
 }
@@ -1074,15 +1183,15 @@ void promptUserForCredentials(int role)
             do
             {
                 displayLoginTime();
-    cout << "                         |                                                                                                            \n";
-    cout << "    Admin                |                              **************************"<<endl;
-    cout << "                         |                              |1. Install Bus           |"<<endl;
-    cout << "           View          |                              |2. Show Buses            |"<<endl;
-    cout << "                         |                              |3. Manage Routes         |"<<endl;
-    cout << "                         |                              |4. Manage Bus Schedule   |"<<endl;
-    cout << "                         |                              |5. Exit Admin Menu       |"<<endl;
-    cout << "                         |                              **************************"<<endl;
-    cout << "                         |                              Choose an option: ";
+                cout << "                         |                                                                                                            \n";
+                cout << "    Admin                |                              **************************" << endl;
+                cout << "                         |                              |1. Install Bus           |" << endl;
+                cout << "           View          |                              |2. Show Buses            |" << endl;
+                cout << "                         |                              |3. Manage Routes         |" << endl;
+                cout << "                         |                              |4. Manage Bus Schedule   |" << endl;
+                cout << "                         |                              |5. Exit Admin Menu       |" << endl;
+                cout << "                         |                              **************************" << endl;
+                cout << "                         |                              Choose an option: ";
 
                 cin >> adminChoice;
                 switch (adminChoice)
@@ -1116,9 +1225,9 @@ void promptUserForCredentials(int role)
                 // Pause to view output
                 if (adminChoice != 5)
                 {
-                    cout << "                         | Press Enter to return to the menu..."<<endl;
-                    cout << "                         |                                     "<<endl;
-                    cout << "{LOG OUT 5}              |                                     "<<endl;
+                    cout << "                         | Press Enter to return to the menu..." << endl;
+                    cout << "                         |                                     " << endl;
+                    cout << "{LOG OUT 5}              |                                     " << endl;
                     cin.ignore();
                     cin.get();
                     system("cls");
@@ -1405,7 +1514,7 @@ void Bus::generateTicket(int busIndex, int seatNumber)
     tickets.push_back(newTicket);
 
     // Output the ticket details to the console
-    cout << "Ticket generated!" << endl;
+    cout << "Ticket Generated!" << endl;
     cout << "Bus Number: " << newTicket.busNumber << endl;
     cout << "Driver: " << newTicket.driverName << endl;
     cout << "From: " << newTicket.from << " To: " << newTicket.to << endl;
@@ -1787,7 +1896,7 @@ int main()
     cout << "==                                                                                                                                  ==\n";
     cout << "==                                                                                                                                  ==\n";
     cout << "==                                                                                                                                  ==\n";
-    cout << "==                                              Press Enter to continue...                                                          ==" <<endl;
+    cout << "==                                              Press Enter to continue...                                                          ==" << endl;
     cout << "==                                                                                                                                  ==\n";
     cout << "**************************************************************************************************************************************\n";
     cout << "======================================================================================================================================\n";
