@@ -1,58 +1,59 @@
-# Transpomate App
+🚍 Transpomate App
+🌟 Overview
+The Transpomate App is a comprehensive system designed to manage and optimize bus operations for both admins and users. It provides functionalities for 🚦 fuel management, 🧾 passenger feedback, 🛣️ route scheduling, 🪑 ticket booking, and more. This system ensures smooth operations, efficient resource management, and an enhanced user experience.
 
-## Overview
-The **Transpomate App** project is a comprehensive system designed to manage and optimize bus operations from both admin and user perspectives. It provides functionalities for fuel management, passenger feedback, route scheduling, ticket booking, and more. The system ensures smooth operations, efficient resource management, and an enhanced user experience.
+🔑 Features
+🛠️ Admin Functionalities
+Bus System Operations:
+🚍 Install new buses with details such as registration numbers and seating capacity.
+🔍 View all buses and their operational details.
+🛣️ Manage routes, including stops, distances, and destinations.
+📅 Assign buses to routes and manage schedules (departure and arrival times).
+✅ Exit the admin view securely.
+👥 User Functionalities
+🪑 Bus Reservation: Reserve seats for a desired bus and get booking confirmation.
+🚌 Show Bus Information: View detailed bus information (route, capacity, timing).
+🔍 Search Bus: Find buses using numbers or routes.
+🎫 Generate Ticket: Create and download tickets with travel details.
+📝 Calculate Feedback: Provide journey feedback to improve services.
+🔧 Additional Functionalities
+⛽ Fuel Management:
 
----
+➕ Add Fuel Consumption: Record fuel usage for each bus.
+📊 Monitor Fuel Consumption: Track and analyze fuel efficiency.
+📈 Calculate Fuel Consumption: Estimate fuel usage based on routes and distances.
+📝 Passenger Feedback:
 
-## Features
+Collect Feedback: Gather feedback from passengers to improve services.
+📄 Show Feedback: View and analyze feedback for service enhancements.
+💻 Technologies Used
+Programming Language: C++
+Concepts Applied:
+🔗 Linked Lists
+🛠️ Queues
+📊 Sorting Algorithms
+🗺️ Graphs
+🚀 How to Run
+Clone the repository: 
+bash
+Copy code
+git clone https://github.com/SyedHasanHussainShah/Transpomate-App-Admin-View-.git
+Compile the C++ files with your preferred compiler.
+Run the executable file and interact with the system via the console.
+📫 Feedback
+Feel free to contribute or provide feedback to enhance the Transpomate App.
 
-### **Admin Functionalities**
-1. **Bus System Operations**:
-   - Install new buses with details such as registration numbers and seating capacity.
-   - View all buses and their operational details.
-   - Manage routes, including stops, distances, and destinations.
-   - Assign buses to routes and manage schedules, including departure and arrival times.
-   - Exit admin view safely and securely.
+ScreenShot:
+![Screenshot 2025-01-07 112015](https://github.com/user-attachments/assets/91c00edd-faaf-4505-b32b-dcf04adb0998)
+![Screenshot 2025-01-06 221242](https://github.com/user-attachments/assets/f91875f6-36a2-44f1-8f17-059789ad0187)
+![Screenshot 2025-01-07 112034](https://github.com/user-attachments/assets/458123d0-ccd7-4756-9cb4-eeb945af110a)
+![Screenshot 2025-01-06 221438](https://github.com/user-attachments/assets/c4d4e523-4ec1-4d84-a095-4c78414f4bdc)
+![WhatsApp Image 2025-01-07 at 11 07 35_081c0570](https://github.com/user-attachments/assets/7719e8cd-2929-4d14-aec7-406b67e0d515)
+![WhatsApp Image 2025-01-07 at 11 24 53_b1d3c8af](https://github.com/user-attachments/assets/8c71b559-ae7e-457a-86d9-c60b0e159f09)
 
----
 
-### **User Functionalities**
-1. **Bus Reservation**: Reserve seats for a desired bus and ensure booking confirmation.
-2. **Show Bus Information**: View detailed bus information, including route, capacity, and timing.
-3. **Search Bus**: Search for buses using bus numbers or routes.
-4. **Generate Ticket**: Create and download tickets for reserved seats with all travel details.
-5. **Calculate Feedback**: Provide journey feedback to improve services.
 
----
 
-### **Additional FUnctionalities**
-1. **Fuel Management**:
-   - **Add Fuel Consumption**: Record fuel usage for each bus.
-   - **Monitor Fuel Consumption**: Track and analyze fuel efficiency.
-   - **Calculate Fuel Consumption**: Estimate fuel usage based on routes and distance.
 
-2. **Passenger Feedback**:
-   - **Collect Feedback**: Receive feedback from passengers to improve services.
-   - **Show Feedback**: View and analyze feedback for service enhancements.
-
----
-
-## Technologies Used
-- **Programming Language**: C++ (with Data Structures and Algorithms)
-- **Concepts Applied**:
-  - Linked Lists
-  - Queues
-  - Sorting Algorithms
-  - Graphs
-
----
-
-![WhatsApp Image 2025-01-04 at 22 13 42_6cd9df64](https://github.com/user-attachments/assets/3a3ef5f3-003b-4003-80a2-b6e470d63dcf)
-![WhatsApp Image 2025-01-04 at 22 13 42_c21c7a5b](https://github.com/user-attachments/assets/e7a9ccb4-d16b-49b4-b2c1-9ca82ea7d07a)
-![WhatsApp Image 2025-01-04 at 22 13 42_d2e89d6d](https://github.com/user-attachments/assets/be1b105a-90af-4db9-a072-42e9abcf4cf5)
-![WhatsApp Image 2025-01-07 at 11 07 35_5d8ce718](https://github.com/user-attachments/assets/b933fe40-d5f7-4a6b-8e44-307083f1b83a)
-![WhatsApp Image 2025-01-07 at 10 57 32_1475595b](https://github.com/user-attachments/assets/cf8effb8-6181-4415-b8a3-a595f9b85077)
-![WhatsApp Image 2025-01-07 at 10 57 35_caa6f8a0](https://github.com/user-attachments/assets/3363038f-f644-4751-b322-4b9db4680740)
 
 
