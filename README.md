@@ -2,16 +2,23 @@
 
 🌟 Overview:
 
-The Transpomate App is a comprehensive system designed to manage and optimize bus operations for both admins and users. It provides functionalities for 🚦 fuel management, 🧾 passenger feedback, 🛣️ route scheduling, 🪑 ticket booking, and more. This system ensures smooth operations, efficient resource management, and an enhanced user experience.
+The Transpomate App is a comprehensive system designed to manage and optimize bus operations for both admins and users. 
+It provides functionalities for:
+🚦 fuel management
+🧾 passenger feedback
+🛣️ route scheduling
+🪑 ticket booking and more.
+This system ensures smooth operations, efficient resource management, and an enhanced user experience.
 
 ----
 
 
 🔑 Features
 
-🛠️ Admin Functionalities
+🛠️ Admin Functionalities:
 
 Bus System Operations:
+
 🚍 Install new buses with details such as registration numbers and seating capacity.
 🔍 View all buses and their operational details.
 🛣️ Manage routes, including stops, distances, and destinations.
@@ -20,7 +27,8 @@ Bus System Operations:
 
 ----
 
-👥 User Functionalities
+👥 User Functionalities:
+
 🪑 Bus Reservation: Reserve seats for a desired bus and get booking confirmation.
 🚌 Show Bus Information: View detailed bus information (route, capacity, timing).
 🔍 Search Bus: Find buses using numbers or routes.
@@ -29,7 +37,7 @@ Bus System Operations:
 
 -----
 
-🔧 Additional Functionalities
+🔧 Additional Functionalities:
 
 ⛽ Fuel Management:
 
@@ -38,13 +46,17 @@ Bus System Operations:
 📈 Calculate Fuel Consumption: Estimate fuel usage based on routes and distances.
 📝 Passenger Feedback:
 
-Collect Feedback: Gather feedback from passengers to improve services.
-📄 Show Feedback: View and analyze feedback for service enhancements.
+Collect Feedback:
+
+Gather feedback from passengers to improve services.
+📄 Show Feedback:
+View and analyze feedback for service enhancements.
 
 -----
 
 
 💻 Technologies Used
+
 Programming Language: C++
 Concepts Applied:
 🔗 Linked Lists
@@ -55,16 +67,22 @@ Concepts Applied:
 -----
 
 🚀 How to Run
+
 Clone the repository: 
+
 bash
-Copy code
+Copy code:
+
 git clone https://github.com/SyedHasanHussainShah/Transpomate-App-Admin-View-.git
-Compile the C++ files with your preferred compiler.
-Run the executable file and interact with the system via the console.
+
+Compile the C++ files with your preferred compiler:
+
+Run the executable file and interact with the system via the console:
 
 -----
 
-📫 Feedback
+📫 Feedback:
+
 Feel free to contribute or provide feedback to enhance the Transpomate App.
 
 -----
