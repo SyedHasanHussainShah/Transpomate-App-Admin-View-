@@ -1,22 +1,36 @@
-🚍 Transpomate App
-🌟 Overview
+🚍 Transpomate App:
+
+🌟 Overview:
+
 The Transpomate App is a comprehensive system designed to manage and optimize bus operations for both admins and users. It provides functionalities for 🚦 fuel management, 🧾 passenger feedback, 🛣️ route scheduling, 🪑 ticket booking, and more. This system ensures smooth operations, efficient resource management, and an enhanced user experience.
 
+----
+
+
 🔑 Features
+
 🛠️ Admin Functionalities
+
 Bus System Operations:
 🚍 Install new buses with details such as registration numbers and seating capacity.
 🔍 View all buses and their operational details.
 🛣️ Manage routes, including stops, distances, and destinations.
 📅 Assign buses to routes and manage schedules (departure and arrival times).
 ✅ Exit the admin view securely.
+
+----
+
 👥 User Functionalities
 🪑 Bus Reservation: Reserve seats for a desired bus and get booking confirmation.
 🚌 Show Bus Information: View detailed bus information (route, capacity, timing).
 🔍 Search Bus: Find buses using numbers or routes.
 🎫 Generate Ticket: Create and download tickets with travel details.
 📝 Calculate Feedback: Provide journey feedback to improve services.
+
+-----
+
 🔧 Additional Functionalities
+
 ⛽ Fuel Management:
 
 ➕ Add Fuel Consumption: Record fuel usage for each bus.
@@ -26,6 +40,10 @@ Bus System Operations:
 
 Collect Feedback: Gather feedback from passengers to improve services.
 📄 Show Feedback: View and analyze feedback for service enhancements.
+
+-----
+
+
 💻 Technologies Used
 Programming Language: C++
 Concepts Applied:
@@ -33,6 +51,9 @@ Concepts Applied:
 🛠️ Queues
 📊 Sorting Algorithms
 🗺️ Graphs
+
+-----
+
 🚀 How to Run
 Clone the repository: 
 bash
@@ -40,8 +61,13 @@ Copy code
 git clone https://github.com/SyedHasanHussainShah/Transpomate-App-Admin-View-.git
 Compile the C++ files with your preferred compiler.
 Run the executable file and interact with the system via the console.
+
+-----
+
 📫 Feedback
 Feel free to contribute or provide feedback to enhance the Transpomate App.
+
+-----
 
 ScreenShot:
 ![Screenshot 2025-01-07 112015](https://github.com/user-attachments/assets/91c00edd-faaf-4505-b32b-dcf04adb0998)
